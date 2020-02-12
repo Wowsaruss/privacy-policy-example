@@ -1,23 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+const pageURL = window.location.search;
+
+const searchParams = new URLSearchParams(pageURL);
+
+const createUrl = () => {
+  const domain = searchParams.get('auth0_domain');
+  const state = searchParams.get('state');
+  return `https://${domain}/continue?state=${state || ''}`;
+};
+
 function App() {
+  const url = createUrl();
+  console.info(url);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        various-jellyfish.surge.sh
+        <form action={url} method="post" enctype="text/html">
+          <div>
+            <label>
+              <input type="checkbox" name="confirm" value="yes" />I agree
+            </label>
+          </div>
+          <input type="submit" value="Submit" />
+        </form>
       </header>
     </div>
   );
