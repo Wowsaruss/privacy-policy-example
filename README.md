@@ -2,7 +2,8 @@
 
 Used in conjunction with auth0 GDPR
 
-URL: various-jellyfish.surge.sh
+URL:
+various-jellyfish.surge.sh
 
 Deployed with surge.sh
 
